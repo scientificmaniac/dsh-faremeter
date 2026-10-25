@@ -1,8 +1,23 @@
+<div align="center">
+
 # dsh-turn-cost — Conversation Cost
+
+Costs in CNY at DeepSeek's official API prices: per turn · per session · per workspace
 
 [简体中文](README.md) · **English**
 
-Displays conversation costs in CNY according to DeepSeek's official API prices, in three places:
+![DSH Plugin](https://img.shields.io/badge/DSH-Plugin-3B82F6)
+![DeepSeek API Pricing](https://img.shields.io/badge/DeepSeek-API_Pricing-4D6BFE)
+![Peak/Off-peak](https://img.shields.io/badge/pricing-peak%2Foff--peak-F59E0B)
+![Search·Fetch per-request](https://img.shields.io/badge/Search%C2%B7Fetch_per--request-22C55E)
+![tests](https://img.shields.io/badge/tests-72_passed-2EA44F)
+![License](https://img.shields.io/badge/license-MIT-8A8F98)
+
+<img src="assets/banner.png" alt="dsh-turn-cost promo: three display surfaces with CNY amounts" width="720">
+
+</div>
+
+It displays costs in three places:
 
 | Location | What it shows |
 |---|---|

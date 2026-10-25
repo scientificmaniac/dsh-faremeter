@@ -1,8 +1,23 @@
+<div align="center">
+
 # dsh-turn-cost — 对话费用
+
+按 DeepSeek 官方 API 价格显示人民币费用：每轮 · 每会话 · 每工作区
 
 **简体中文** · [English](README_en.md)
 
-按 DeepSeek 官方 API 价格显示人民币费用，三个位置：
+![DSH Plugin](https://img.shields.io/badge/DSH-Plugin-3B82F6)
+![DeepSeek API Pricing](https://img.shields.io/badge/DeepSeek-API_Pricing-4D6BFE)
+![峰谷计价](https://img.shields.io/badge/%E5%B3%B0%E8%B0%B7%E8%AE%A1%E4%BB%B7-F59E0B)
+![Search·Fetch 按次计费](https://img.shields.io/badge/Search%C2%B7Fetch_%E6%8C%89%E6%AC%A1%E8%AE%A1%E8%B4%B9-22C55E)
+![tests](https://img.shields.io/badge/tests-72_passed-2EA44F)
+![License](https://img.shields.io/badge/license-MIT-8A8F98)
+
+<img src="assets/banner.png" alt="dsh-turn-cost 宣传图：三个显示位与人民币金额" width="720">
+
+</div>
+
+三个显示位置：
 
 | 位置 | 显示什么 |
 |---|---|
