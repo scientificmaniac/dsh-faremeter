@@ -1,8 +1,8 @@
 <div align="center">
 
-# dsh-turn-cost — 对话费用
+# dsh-faremeter — 给 AI 对话打表
 
-按 DeepSeek 官方 API 价格显示人民币费用：每轮 · 每会话 · 每工作区
+token 按官方三档 + 峰谷实时计价；2026-11-01 起网页搜索/抓取按次计费（¥5/1000 次），一次不漏。每轮 · 每会话 · 每工作区，三处人民币金额。
 
 **简体中文** · [English](README_en.md)
 
@@ -13,7 +13,7 @@
 ![tests](https://img.shields.io/badge/tests-72_passed-2EA44F)
 ![License](https://img.shields.io/badge/license-MIT-8A8F98)
 
-<img src="assets/banner.png" alt="dsh-turn-cost 宣传图：三个显示位与人民币金额" width="720">
+<img src="assets/banner.png" alt="dsh-faremeter 宣传图：三个显示位与人民币金额" width="720">
 
 </div>
 
@@ -116,7 +116,7 @@ pwsh -File install-profile.ps1
 pwsh -File install-profile.ps1 -Uninstall
 ```
 
-脚本会：备份 profile 的 `package.json` → 加一条 `link:` 依赖 → 把 `dsh-turn-cost` 追加进 `dsh.profile.bundles` → 在 profile 的 `node_modules` 下建 junction。
+脚本会：备份 profile 的 `package.json` → 加一条 `link:` 依赖 → 把 `dsh-faremeter` 追加进 `dsh.profile.bundles` → 在 profile 的 `node_modules` 下建 junction。
 
 **装完必须完全退出并重开 DSH Desktop**（关窗口不够，要退出进程），客户端 bundle 才会被编进 `window.__DSH_BOOT__`。
 
@@ -125,7 +125,7 @@ pwsh -File install-profile.ps1 -Uninstall
 | 项 | 值 |
 |---|---|
 | 插槽 | `conversation.chat.assistant-actions`（list，session 作用域，`order: 20`） |
-| 条目 id | `turn-cost` |
+| 条目 id | `faremeter` |
 | 数据来源 | slot 标准 props 的 `useChat` → `turn-tail` 节点的 `data.tokenUsage` / `data.closing.time` |
 | 注入服务 | 只有 `slots` |
 
@@ -145,8 +145,8 @@ pwsh -File pack.ps1
 
 | 文件 | 用途 |
 |---|---|
-| `dsh-turn-cost-<version>.tgz` | npm 标准包，DSH 插件安装走这个。内容严格按 `package.json` 的 `files` 白名单，**不含测试与打包脚本** |
-| `dsh-turn-cost-<version>.zip` | 源码分发：解压即得完整插件目录，直接跑 `install-profile.ps1` 安装；额外带测试便于复核 |
+| `dsh-faremeter-<version>.tgz` | npm 标准包，DSH 插件安装走这个。内容严格按 `package.json` 的 `files` 白名单，**不含测试与打包脚本** |
+| `dsh-faremeter-<version>.zip` | 源码分发：解压即得完整插件目录，直接跑 `install-profile.ps1` 安装；额外带测试便于复核 |
 
 脚本会先**跑完四组测试**再打包——测试不过就中止，不会产出带病产物。打包后还会做三件事：
 
@@ -161,7 +161,7 @@ pwsh -File pack.ps1
 如果胶囊没出现，在浏览器控制台（Ctrl+Shift+I）**手打**下面这一行回车：
 
 ```js
-__DSH_TURN_COST__
+__DSH_FAREMETER__
 ```
 
 会返回一个诊断对象：

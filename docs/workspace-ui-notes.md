@@ -154,7 +154,7 @@ ctx.slots.inject("sidebar.workspaces.session.row.action", function () {
   return ctx.slots.register(
     {
       name: "sidebar.workspaces.session.row.action",
-      id: "turn-cost.workspace-total",   // 自己的命名空间 id，不遮蔽官方 archive(100)/pin(200)
+      id: "faremeter.workspace-total",   // 自己的命名空间 id，不遮蔽官方 archive(100)/pin(200)
       order: 900,
       label: function () { return "工作区累计花费"; }
     },
@@ -171,8 +171,8 @@ ctx.slots.inject("sidebar.workspaces.session.row.action", function () {
         }
       }
       // 金额来自本插件自己的数据源（见 Q5 末：快照里没有 cost 字段）
-      var amount = window.__DSH_TURN_COST__ && window.__DSH_TURN_COST__.workspaceTotals
-        ? window.__DSH_TURN_COST__.workspaceTotals[workspaceId]
+      var amount = window.__DSH_FAREMETER__ && window.__DSH_FAREMETER__.workspaceTotals
+        ? window.__DSH_FAREMETER__.workspaceTotals[workspaceId]
         : undefined;
       if (workspaceId === null || amount === undefined) return null;   // fail-open
 
@@ -413,7 +413,7 @@ scheduleReconcile();   // 首帧补一次
 |---|---|---|
 | L0 | 正常 | `data-row-key="workspace:<id>"` 命中 → 行尾常显 |
 | L1 | `data-row-key` 改名/移除 | 用 `isWorkspaceRowByAria()` 找行；但此时**拿不到 workspaceId** → 仅当插件缓存了 `workspaceId → 工作区标题` 映射且该行文本能唯一匹配时才贴（标题可能被本地化成「默认工作区」，见 `client.js:3517-3521`，所以**默认不做**） |
-| L2 | 两个选择器都找不到行 | 静默不渲染，**不抛错、不隐式重试**；在诊断对象（现有 `window.__DSH_TURN_COST__`）里记一条 `wsAnchorMiss`，方便用户/维护者一眼看出「插件在、只是没找到落点」 |
+| L2 | 两个选择器都找不到行 | 静默不渲染，**不抛错、不隐式重试**；在诊断对象（现有 `window.__DSH_FAREMETER__`）里记一条 `wsAnchorMiss`，方便用户/维护者一眼看出「插件在、只是没找到落点」 |
 | L3 | 产品层兜底 | 走官方 slot 的悬浮卡片条目（方案 A 兜底），以及已有的每轮费用胶囊（`conversation.chat.assistant-actions`，插件现状）继续工作 |
 
 > 关键纪律：**任何一级失败都不能让侧边栏报错或阻塞点击**。注入的 span 加 `pointer-events:none`，`reconcile` 整体 `try/catch`，`apply()` 不抛（沿用现有插件 `lib/client.js` 的 fail-open 约定）。

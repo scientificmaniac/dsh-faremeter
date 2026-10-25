@@ -1,5 +1,5 @@
 /**
- * dsh-turn-cost 离线测试。
+ * dsh-faremeter 离线测试。
  *
  * 三层验证：
  *   1. 纯计算：峰谷判定、三类 token 分桶、金额公式 —— 与 `test/vectors.json`
@@ -89,7 +89,7 @@ const I = bundle.plugin.__internals;
 /* ══════════════════ 1. 纯计算 ══════════════════ */
 
 test("bundle 形状：id / apply / inject", () => {
-  eq(bundle.registration.id, "dsh-turn-cost", "bundle id");
+  eq(bundle.registration.id, "dsh-faremeter", "bundle id");
   eq(typeof bundle.plugin.apply, "function", "apply 类型");
   ok(Array.isArray(bundle.plugin.inject), "inject 必须是数组");
   eq(bundle.plugin.inject.join(","), "slots", "只注入 slots");
@@ -528,7 +528,7 @@ test("组件：本轮的 Search/Fetch 计费并入金额与明细面板", async 
 
   trigger.handlers.onClick({ stopPropagation() {} });
   await settle(4);
-  const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-turn-cost-details") === "1");
+  const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-faremeter-details") === "1");
   ok(details, "明细面板应出现");
   const texts = [];
   walk(details, (node) => {
@@ -540,7 +540,7 @@ test("组件：本轮的 Search/Fetch 计费并入金额与明细面板", async 
   ok(joined.indexOf("2 次") >= 0, "应显示搜索次数");
   ok(joined.indexOf("1 次") >= 0, "应显示抓取次数");
 
-  const total = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-turn-cost-total") === "1");
+  const total = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-faremeter-total") === "1");
   ok(total, "合计行应存在");
   ok(/^¥0\.935/.test(total.textContent), `合计应含 web，实际 ${JSON.stringify(total.textContent)}`);
 });
@@ -595,9 +595,9 @@ test("组件：点击 trigger 弹出明细面板，含分项与合计", async ()
   trigger.handlers.onClick({ stopPropagation() {} });
   await settle(4);
 
-  const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-turn-cost-details") === "1");
+  const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-faremeter-details") === "1");
   ok(details, "document.body 里应出现明细面板");
-  const total = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-turn-cost-total") === "1");
+  const total = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-faremeter-total") === "1");
   ok(total, "应出现合计行");
   ok(/^¥0\.9/.test(total.textContent), `合计应显示金额，实际 ${JSON.stringify(total.textContent)}`);
 
@@ -778,7 +778,7 @@ test("组件：底部累计胶囊显示本会话金额，点开有分项", async
     pill.handlers.onClick();
     await settle(6);
 
-    const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-turn-cost-summary") === "1");
+    const details = findNode(doc.body, (node) => node.getAttribute && node.getAttribute("data-faremeter-summary") === "1");
     ok(details, "应弹出分项面板");
     const texts = [];
     walk(details, (node) => {
@@ -837,9 +837,9 @@ test("apply：注册每轮胶囊 + 底部累计两个插槽", () => {
     eq(registered.length, 2, "应注册两个条目");
     const byName = {};
     for (const entry of registered) byName[entry.opts.name] = entry.opts;
-    eq(byName["conversation.chat.assistant-actions"].id, "turn-cost");
+    eq(byName["conversation.chat.assistant-actions"].id, "faremeter");
     eq(byName["conversation.chat.assistant-actions"].order, 20);
-    eq(byName["conversation.composer.dock"].id, "turn-cost-total");
+    eq(byName["conversation.composer.dock"].id, "faremeter-total");
     eq(byName["conversation.composer.dock"].order, 2);
     eq(typeof byName["conversation.composer.dock"].label, "function");
     eq(byName["conversation.composer.dock"].label(), "累计费用");
@@ -878,7 +878,7 @@ test("apply：slots 服务异常时不抛出，只吞掉", () => {
 await runAll();
 
 const total = passed + failures.length;
-console.log(`\ndsh-turn-cost 测试：${passed}/${total} 通过`);
+console.log(`\ndsh-faremeter 测试：${passed}/${total} 通过`);
 if (failures.length > 0) {
   console.error("\n失败项：");
   for (const failure of failures) console.error(`  ✗ ${failure}`);

@@ -182,11 +182,11 @@ obs[Symbol.dispose]()                                     // 观测是租约，�
 
 ```js
 // 精确路由
-const dispose = ctx.webServer.register({ kind: 'exact', path: '/dsh-turn-cost/ledger.json', handler })
+const dispose = ctx.webServer.register({ kind: 'exact', path: '/dsh-faremeter/ledger.json', handler })
 // 前缀路由
-ctx.webServer.register({ kind: 'prefix', path: '/dsh-turn-cost/', handler })
+ctx.webServer.register({ kind: 'prefix', path: '/dsh-faremeter/', handler })
 // upgrade（WebSocket 等）
-ctx.webServer.registerUpgrade({ path: '/dsh-turn-cost/ws', handler })
+ctx.webServer.registerUpgrade({ path: '/dsh-faremeter/ws', handler })
 ```
 
 - `register(route)`：`kind` 只能是 `'exact'` 或 `'prefix'`；重复路径 **throw**；返回 disposer。`lib/index.js:326-333`
@@ -203,7 +203,7 @@ ctx.webServer.registerUpgrade({ path: '/dsh-turn-cost/ws', handler })
 ctx.inject(['webServer'], (scope) => {
   scope.effect(() => scope.webServer.register({
     kind: 'exact',
-    path: '/dsh-turn-cost/ledger.json',
+    path: '/dsh-faremeter/ledger.json',
     handler: (req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
       res.end(JSON.stringify({ ok: true, workspaces: [] }))
@@ -547,7 +547,7 @@ import { defineDomain, domainTable } from '@deepseek-ai/dsh-storage-domain'
 import { z } from 'zod'
 
 const turnCostSpec = defineDomain({
-  name: 'turn_cost',                     // → ~/.dsh/storages/turn_cost.json
+  name: 'faremeter',                     // → ~/.dsh/storages/faremeter.json
   version: 1,
   tables: {
     sessions: domainTable(z.object({
@@ -610,7 +610,7 @@ whale-widget 没有用 storage API，而是自己 `fs.writeFileSync` 到 **`$DSH
 
 **【推断】** `~/.dsh/` 下**没有官方"插件私有目录"约定**；`storages/` 是唯一有官方语义的宿主侧持久化位置，`.dshw-*` 只是 whale-widget 的自选命名（它是靠"多候选路径 + 静默失败"来容错的）。另外它踩过的坑在 `35`、`64-69` 的注释里（两端各写一份、路径压缩后 `$DSH_HOME` 匹配不到），值得引以为戒。
 
-**建议**：账本若要跨重启且要参与聚合，用 `storageDomain`（`turn_cost` domain）；只用 `.dshw-*.json` 适合"极小、丢了也无所谓"的 UI 状态（如 whale 的 `seq`）。
+**建议**：账本若要跨重启且要参与聚合，用 `storageDomain`（`faremeter` domain）；只用 `.dshw-*.json` 适合"极小、丢了也无所谓"的 UI 状态（如 whale 的 `seq`）。
 
 ---
 
@@ -621,7 +621,7 @@ whale-widget 没有用 storage API，而是自己 `fs.writeFileSync` 到 **`$DSH
 | 层 | 载体 | 职责 |
 |---|---|---|
 | **① 真源（可回放）** | `turnCost` **projection unit**（`ctx.sessionProjections.register`） | 每会话、每轮的累计费用与分项。`apply()` 吃 `assistant/message` 累加、吃 `turn/end` 结算、吃 `llm/retry-started` 回滚重试槽位（照抄 `tokenUsageProjectionDefinition` 的容错套路） |
-| **② 聚合索引（可重建）** | 宿主内存 `Map` + 可选 `storageDomain` `turn_cost` | `sessionId → {workspaceId, cwd, totalCny, byModel, updatedSeq}`；按 `workspaceId` 求和。启动回填一次，之后增量 |
+| **② 聚合索引（可重建）** | 宿主内存 `Map` + 可选 `storageDomain` `faremeter` | `sessionId → {workspaceId, cwd, totalCny, byModel, updatedSeq}`；按 `workspaceId` 求和。启动回填一次，之后增量 |
 | **③ 展示** | 客户端 `useProjection('turnCost')` + 一个 GET 路由给非 session 作用域的页面（工作区总览） | 会话内小计；跨工作区总览走路由 |
 
 > **为什么①不用自己持久化**：`session-projection-cache` 会把**所有**已注册单元（`checkpoint()` 遍历全部 registration，`dsh-session-projection/lib/index.js:195-206`）按 `(sessionId, key, ver, seq, val)` 落盘到 `~/.dsh/storages/session_projcache/sessions/<id>.json`，并在 `session/created`、`turn/end`、`session/disposed` 三个必写点刷（`dsh-session-projection-cache/README.zh.md:57`；配置见 `dsh-base/cordis.patch.yml:196-200`）。历史会话首次冷读由 `hydratePrepared` 顺手写回（`dsh-session-projection-cache/lib/index.js:247-255`）。

@@ -36,7 +36,7 @@ function eq(actual, expected, label) {
   }
 }
 
-const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "dsh-turn-cost-test-"));
+const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "dsh-faremeter-test-"));
 process.on("exit", () => {
   try { fs.rmSync(tmpRoot, { recursive: true, force: true }); } catch { /* 忽略 */ }
 });

@@ -1,5 +1,5 @@
 <#
-  把 dsh-turn-cost（每轮费用胶囊）装进某个 DSH profile（默认 desktop）。
+  把 dsh-faremeter（每轮费用胶囊）装进某个 DSH profile（默认 desktop）。
 
   为什么需要它：`desktop` 是 Electron 应用保留的 profile，命令行
   `dsh plugin --profile desktop …` 会被直接拒绝（"managed exclusively by the
@@ -36,12 +36,12 @@ if (-not $PluginDir) {
 
 $ErrorActionPreference = "Stop"
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-$PLUGIN_NAME = "dsh-turn-cost"
+$PLUGIN_NAME = "dsh-faremeter"
 
 function Say($message) { Write-Host "  $message" }
 function Fail($message) { Write-Host "✗ $message" -ForegroundColor Red; exit 1 }
 
-Write-Host "`n=== dsh-turn-cost 安装器 ===" -ForegroundColor Cyan
+Write-Host "`n=== dsh-faremeter 安装器 ===" -ForegroundColor Cyan
 Say "DSH home     : $DshHome"
 Say "profile      : $Profile"
 Say "插件目录     : $PluginDir"

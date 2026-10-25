@@ -1,13 +1,13 @@
 <#
-  dsh-turn-cost 打包脚本
+  dsh-faremeter 打包脚本
 
   产出两种分发物（都放在 dist\ 下）：
 
-    1. dsh-turn-cost-<version>.tgz
+    1. dsh-faremeter-<version>.tgz
        npm 标准包。DSH 的插件安装走的就是它（`dsh plugin install` / 依赖里的 tgz URL），
        内容严格按 package.json 的 files 白名单，**不含测试与打包脚本**。
 
-    2. dsh-turn-cost-<version>.zip
+    2. dsh-faremeter-<version>.zip
        源码分发：解压后就是一个完整插件目录，直接 `pwsh -File install-profile.ps1`
        即可安装（脚本按自身目录定位插件，不依赖当前工作目录）。
        额外带上测试，方便别人复核。
@@ -168,7 +168,7 @@ const problems = [];
 if (threw) problems.push("apply 抛错: " + threw);
 if (routes.length !== 1) problems.push(`应注册 1 条路由，实际 ${routes.length}`);
 else {
-  if (routes[0].path !== "/turn-cost/summary") problems.push("路由 path 不对: " + routes[0].path);
+  if (routes[0].path !== "/faremeter/summary") problems.push("路由 path 不对: " + routes[0].path);
   if (routes[0].kind !== "exact") problems.push("路由 kind 不对: " + routes[0].kind);
   if (typeof routes[0].handler !== "function") problems.push("handler 不是函数");
 }
@@ -177,7 +177,7 @@ if (!logs.some((line) => line.includes("客户端产物"))) problems.push("没�
 // 客户端产物关键标记
 import { readFileSync } from "node:fs";
 const bundle = readFileSync(new URL("./lib/client.js", import.meta.url), "utf8");
-for (const marker of ["__ModuleLoader__.load", 'id: "dsh-turn-cost"', "conversation.chat.assistant-actions", "conversation.composer.dock", "/turn-cost/summary"]) {
+for (const marker of ["__ModuleLoader__.load", 'id: "dsh-faremeter"', "conversation.chat.assistant-actions", "conversation.composer.dock", "/faremeter/summary"]) {
   if (!bundle.includes(marker)) problems.push("客户端产物缺少标记: " + marker);
 }
 
@@ -237,7 +237,7 @@ Write-Host @"
     再把 "$name" 加进 profile 的 dsh.profile.bundles。
 
   安装 zip（源码方式）：
-    解压 dsh-turn-cost-$version.zip → 进入 dsh-turn-cost 目录 →
+    解压 dsh-faremeter-$version.zip → 进入 dsh-faremeter 目录 →
       pwsh -File install-profile.ps1
     装完**完全退出并重开** DSH Desktop。
 

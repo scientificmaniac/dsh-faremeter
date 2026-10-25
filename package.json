@@ -1,8 +1,8 @@
 {
-  "name": "dsh-turn-cost",
-  "version": "1.2.0",
+  "name": "dsh-faremeter",
+  "version": "1.3.0",
   "private": true,
-  "description": "按 DeepSeek 官方 API 价格（含缓存命中/未命中分档、峰谷时段、Search/Fetch 按次计费）显示费用：每轮用量旁、输入框底部会话累计、侧边栏每个工作区累计",
+  "description": "给 AI 对话打表：按 DeepSeek 官方价显示每轮 / 每会话 / 每工作区人民币费用——token 三档 + 峰谷分时，2026-11-01 起网页搜索/抓取按次计费（¥5/1000 次）",
   "license": "MIT",
   "type": "module",
   "main": "./lib/index.js",
@@ -33,8 +33,8 @@
   ],
   "icon": "./icon.svg",
   "meta": {
-    "title": "对话费用",
-    "description": "按官方 API 价格显示费用：每轮回答的 token 用量旁显示本轮花费，输入框底部显示本会话/全部累计，侧边栏每个工作区显示累计花费。缓存命中与峰谷时段分别计价；2026-11-01 起网页搜索/抓取按次计费（每次 ¥0.005）。"
+    "title": "对话打表",
+    "description": "给 AI 对话打表：每轮回答的 token 用量旁显示本轮花费，输入框底部显示本会话/全部累计，侧边栏每个工作区显示累计花费。token 三档与峰谷分别计价；2026-11-01 起网页搜索/抓取按次计费（每次 ¥0.005）。"
   },
   "dsh": {
     "bundle": {

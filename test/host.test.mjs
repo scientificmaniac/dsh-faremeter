@@ -76,10 +76,10 @@ function callHandler(route, { method = "GET", host = "127.0.0.1:43120" } = {}) {
 const fake = createFakeCtx();
 apply(fake.ctx);
 
-test("apply：注册 GET /turn-cost/summary（exact）", () => {
+test("apply：注册 GET /faremeter/summary（exact）", () => {
   eq(fake.routes.length, 1, "应注册一条路由");
   eq(fake.routes[0].kind, "exact");
-  eq(fake.routes[0].path, "/turn-cost/summary");
+  eq(fake.routes[0].path, "/faremeter/summary");
   eq(typeof fake.routes[0].handler, "function");
   ok(fake.logs.some((line) => line.includes("账本路由已挂载")), "应有挂载日志");
 });

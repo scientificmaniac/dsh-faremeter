@@ -1,8 +1,8 @@
 <div align="center">
 
-# dsh-turn-cost — Conversation Cost
+# dsh-faremeter — A Fare Meter for AI Chats
 
-Costs in CNY at DeepSeek's official API prices: per turn · per session · per workspace
+Token fares across the official tiers with peak/off-peak hours — and from Nov 1, 2026, per-request web Search/Fetch billing (¥5 per 1,000). Per turn · per session · per workspace, always in CNY.
 
 [简体中文](README.md) · **English**
 
@@ -13,7 +13,7 @@ Costs in CNY at DeepSeek's official API prices: per turn · per session · per w
 ![tests](https://img.shields.io/badge/tests-72_passed-2EA44F)
 ![License](https://img.shields.io/badge/license-MIT-8A8F98)
 
-<img src="assets/banner.png" alt="dsh-turn-cost promo: three display surfaces with CNY amounts" width="720">
+<img src="assets/banner.png" alt="dsh-faremeter promo: three display surfaces with CNY amounts" width="720">
 
 </div>
 
@@ -116,7 +116,7 @@ pwsh -File install-profile.ps1
 pwsh -File install-profile.ps1 -Uninstall
 ```
 
-The script: backs up the profile's `package.json` → adds a `link:` dependency → appends `dsh-turn-cost` to `dsh.profile.bundles` → creates a junction under the profile's `node_modules`.
+The script: backs up the profile's `package.json` → adds a `link:` dependency → appends `dsh-faremeter` to `dsh.profile.bundles` → creates a junction under the profile's `node_modules`.
 
 **After installing you must fully quit and restart DSH Desktop** (closing the window is not enough — the process must exit) so the client bundle gets compiled into `window.__DSH_BOOT__`.
 
@@ -125,7 +125,7 @@ The script: backs up the profile's `package.json` → adds a `link:` dependency 
 | Item | Value |
 |---|---|
 | Slots | `conversation.chat.assistant-actions` (list, session scope, `order: 20`) |
-| Entry id | `turn-cost` |
+| Entry id | `faremeter` |
 | Data source | slot standard props' `useChat` → `turn-tail` node's `data.tokenUsage` / `data.closing.time` |
 | Injected services | `slots` only |
 
@@ -145,8 +145,8 @@ Artifacts land in `dist\`:
 
 | File | Purpose |
 |---|---|
-| `dsh-turn-cost-<version>.tgz` | Standard npm package — this is what DSH plugin installation consumes. Contents strictly follow the `files` whitelist in `package.json`; **no tests or build scripts** |
-| `dsh-turn-cost-<version>.zip` | Source distribution: unzip to get the complete plugin directory and run `install-profile.ps1` directly; tests included for review |
+| `dsh-faremeter-<version>.tgz` | Standard npm package — this is what DSH plugin installation consumes. Contents strictly follow the `files` whitelist in `package.json`; **no tests or build scripts** |
+| `dsh-faremeter-<version>.zip` | Source distribution: unzip to get the complete plugin directory and run `install-profile.ps1` directly; tests included for review |
 
 The script runs **all four test groups first** — a failing test aborts the build. After packing it also: verifies the tgz entry list (required files present; no tests/deps/build scripts leaked in), unpacks the tgz into a temp directory and **really runs it** (loads `lib/index.js`, calls `apply()`, asserts routes register without throwing and client bundle markers are present), then produces the zip and prints its SHA256.
 
@@ -157,7 +157,7 @@ The script runs **all four test groups first** — a failing test aborts the bui
 If the pill doesn't appear, open the browser console (Ctrl+Shift+I) and **type by hand**:
 
 ```js
-__DSH_TURN_COST__
+__DSH_FAREMETER__
 ```
 
 It returns a diagnostics object:
