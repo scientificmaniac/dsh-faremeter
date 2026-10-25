@@ -1,0 +1,12 @@
+# 构建产物（发布件在 GitHub Releases / npm，不入库）
+dist/
+
+# 打包脚本钉住的本地 npm 缓存
+.npm-cache/
+
+# 依赖
+node_modules/
+
+# 日志与临时文件
+*.log
+*.tmp

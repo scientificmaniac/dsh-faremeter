@@ -1,0 +1,53 @@
+{
+  "name": "dsh-turn-cost",
+  "version": "1.2.0",
+  "private": true,
+  "description": "按 DeepSeek 官方 API 价格（含缓存命中/未命中分档、峰谷时段、Search/Fetch 按次计费）显示费用：每轮用量旁、输入框底部会话累计、侧边栏每个工作区累计",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "cordis.patch.yml",
+    "install-profile.ps1",
+    "icon.svg",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cost",
+    "pricing",
+    "token-usage",
+    "workspace"
+  ],
+  "icon": "./icon.svg",
+  "meta": {
+    "title": "对话费用",
+    "description": "按官方 API 价格显示费用：每轮回答的 token 用量旁显示本轮花费，输入框底部显示本会话/全部累计，侧边栏每个工作区显示累计花费。缓存命中与峰谷时段分别计价；2026-11-01 起网页搜索/抓取按次计费（每次 ¥0.005）。"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "test": "node test/cost-core.test.mjs && node test/session-scan.test.mjs && node test/client.test.mjs && node test/host.test.mjs",
+    "test:live": "node test/live-ledger.mjs",
+    "test:vectors": "python test/expected_cost.py --check"
+  }
+}

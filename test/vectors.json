@@ -1,0 +1,674 @@
+[
+  {
+    "name": "边界-工作日-08:59:59-谷",
+    "at": "2026-10-19T08:59:59+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-09:00:00-峰",
+    "at": "2026-10-19T09:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-11:59:59-峰",
+    "at": "2026-10-19T11:59:59+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-12:00:00-谷",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-13:59:59-谷",
+    "at": "2026-10-19T13:59:59+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-14:00:00-峰",
+    "at": "2026-10-19T14:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-17:59:59-峰",
+    "at": "2026-10-19T17:59:59+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "边界-工作日-18:00:00-谷",
+    "at": "2026-10-19T18:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "周末-周六10点-谷",
+    "at": "2026-10-24T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "周末-周日10点-谷",
+    "at": "2026-10-25T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "法定节假日-国庆首日-谷",
+    "at": "2026-10-01T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "法定节假日-春节中段-谷",
+    "at": "2026-02-20T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "法定节假日-元旦-谷",
+    "at": "2026-01-01T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 3.75,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "调休上班周六10点-仍按周末谷",
+    "at": "2026-10-10T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "普通工作日周五10点-峰",
+    "at": "2026-12-25T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 7.5,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "节假日末日-10点-谷",
+    "at": "2026-10-07T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "节假日次日-10点-峰",
+    "at": "2026-10-08T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "全零用量-峰-费用为0",
+    "at": "2026-10-19T09:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": true,
+      "cost": 0.0,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "仅缓存写入非零-谷-写入不计费",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "cacheWriteTokens": 5000000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.0,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "仅缓存命中-峰",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 800000,
+      "outputTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": true,
+      "cost": 0.032,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "完全未命中-峰",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 1200000,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": true,
+      "cost": 10.8,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "纯输出-峰",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 300000,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": true,
+      "cost": 2.4,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "仅输入-命中未命中各半-谷",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 400000,
+      "cacheReadTokens": 600000,
+      "outputTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": false,
+      "cost": 1.89,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "命中加输出-谷",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 2000000,
+      "outputTokens": 50000,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.24,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "未命中加输出-峰",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 700000,
+      "cacheReadTokens": 0,
+      "outputTokens": 20000,
+      "cacheWriteTokens": 0
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.56,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "三类全非零-flash-峰",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "三类全非零-flash-谷",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "三类全非零-v4pro-峰",
+    "at": "2026-12-25T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 7.5,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "三类全非零-v4pro-周末谷",
+    "at": "2026-10-24T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 3.75,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "极小用量-各1token-谷",
+    "at": "2026-10-19T12:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 1,
+      "cacheReadTokens": 1,
+      "outputTokens": 1,
+      "cacheWriteTokens": 1
+    },
+    "expected": {
+      "peak": false,
+      "cost": 5.02e-06,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "大额缓存写入-峰-不计费",
+    "at": "2026-10-19T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "cacheWriteTokens": 10000000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 0.0,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "大数-v4pro-峰",
+    "at": "2026-12-25T10:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 1234567,
+      "cacheReadTokens": 8888888,
+      "outputTokens": 456789,
+      "cacheWriteTokens": 1000000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 26.1110724,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "大数-flash-周末谷",
+    "at": "2026-10-24T10:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 1234567,
+      "cacheReadTokens": 8888888,
+      "outputTokens": 456789,
+      "cacheWriteTokens": 1000000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 3.23950076,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "UTC等价北京09点-峰",
+    "at": "2026-10-19T01:00:00Z",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "UTC等价北京12点-谷",
+    "at": "2026-10-19T04:00:00Z",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "跨日-美东偏移-周一北京09点-峰",
+    "at": "2026-10-18T21:00:00-04:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 1.84,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "跨日-UTC18点-北京次日02点-谷",
+    "at": "2026-10-19T18:00:00Z",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 3.75,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "负偏移-等价北京10点-峰",
+    "at": "2026-10-18T19:00:00-07:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": true,
+      "cost": 7.5,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "周日UTC表示-北京10点-谷",
+    "at": "2026-10-25T02:00:00Z",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "周末晚22点-谷",
+    "at": "2026-10-17T22:00:00+08:00",
+    "model": "deepseek-v4-pro",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 3.75,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "工作日晚19点-谷",
+    "at": "2026-10-19T19:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  },
+  {
+    "name": "工作日早08点-谷",
+    "at": "2026-10-19T08:00:00+08:00",
+    "model": "deepseek-flash",
+    "usage": {
+      "uncachedInputTokens": 500000,
+      "cacheReadTokens": 1000000,
+      "outputTokens": 100000,
+      "cacheWriteTokens": 200000
+    },
+    "expected": {
+      "peak": false,
+      "cost": 0.92,
+      "currency": "CNY"
+    }
+  }
+]
