@@ -6,6 +6,7 @@ token 按官方三档 + 峰谷实时计价；2026-11-01 起网页搜索/抓取�
 
 **简体中文** · [English](README_en.md)
 
+[![npm](https://img.shields.io/npm/v/dsh-faremeter)](https://www.npmjs.com/package/dsh-faremeter)
 ![DSH Plugin](https://img.shields.io/badge/DSH-Plugin-3B82F6)
 ![DeepSeek API Pricing](https://img.shields.io/badge/DeepSeek-API_Pricing-4D6BFE)
 ![峰谷计价](https://img.shields.io/badge/%E5%B3%B0%E8%B0%B7%E8%AE%A1%E4%BB%B7-F59E0B)
@@ -105,11 +106,22 @@ token 按官方三档 + 峰谷实时计价；2026-11-01 起网页搜索/抓取�
 
 ## 安装
 
+**方式一：npm（推荐）**——已发布到 npm，预构建安装免 `allowBuilds` 构建授权：
+
+```powershell
+# 在 DSH desktop profile 目录里执行（~/.dsh/profiles/desktop）
+cd $env:USERPROFILE\.dsh\profiles\desktop
+npm install dsh-faremeter
+# 再把 "dsh-faremeter" 加进 package.json 的 dsh.profile.bundles 数组
+```
+
+**方式二：源码 / Release**——克隆本仓库（或从 [Releases](https://github.com/scientificmaniac/dsh-faremeter/releases) 解压 zip）后在插件目录执行：
+
 ```powershell
 # 预览要做的改动（不落盘）
 pwsh -File install-profile.ps1 -WhatIf
 
-# 装进 desktop profile
+# 装进 desktop profile（自动完成依赖、bundles 与 junction 的全部改动）
 pwsh -File install-profile.ps1
 
 # 卸载

@@ -6,6 +6,7 @@ Token fares across the official tiers with peak/off-peak hours — and from Nov 
 
 [简体中文](README.md) · **English**
 
+[![npm](https://img.shields.io/npm/v/dsh-faremeter)](https://www.npmjs.com/package/dsh-faremeter)
 ![DSH Plugin](https://img.shields.io/badge/DSH-Plugin-3B82F6)
 ![DeepSeek API Pricing](https://img.shields.io/badge/DeepSeek-API_Pricing-4D6BFE)
 ![Peak/Off-peak](https://img.shields.io/badge/pricing-peak%2Foff--peak-F59E0B)
@@ -105,11 +106,22 @@ Workspace attribution: the `cwd` in the `session` header event; the host then ma
 
 ## Install
 
+**Option 1: npm (recommended)** — published to npm; prebuilt installs skip the `allowBuilds` build-approval step:
+
+```powershell
+# Run inside the DSH desktop profile directory (~/.dsh/profiles/desktop)
+cd $env:USERPROFILE\.dsh\profiles\desktop
+npm install dsh-faremeter
+# Then add "dsh-faremeter" to the dsh.profile.bundles array in package.json
+```
+
+**Option 2: source / Release** — clone this repo (or unzip the release bundle from [Releases](https://github.com/scientificmaniac/dsh-faremeter/releases)) and run inside the plugin directory:
+
 ```powershell
 # Preview what will change (no writes)
 pwsh -File install-profile.ps1 -WhatIf
 
-# Install into the desktop profile
+# Install into the desktop profile (handles dependency, bundles and junction for you)
 pwsh -File install-profile.ps1
 
 # Uninstall
